@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var connectDB = require('../server/index')
 router.get('/get/:id', async function (req, res, next) {
-    const sql = `SELECT * from account where qq = ${req.params.id}`
+    const sql = "SELECT * from account where qq = '" + req.params.id + "';"
     const data = await connectDB(sql)
     return res.json({
         msg: 'success',
@@ -13,7 +13,7 @@ router.get('/get/:id', async function (req, res, next) {
 
 router.post('/add_qq', async function (req, res, next) {
     const { qq, mima } = req.body
-    const sql = 'INSERT INTO account (qq, mima) VALUES (' + qq + ', ' + mima + ');'
+    const sql = "INSERT INTO account (qq, mima) VALUES ('" + qq + "', '" + mima + "');"
     console.log(sql)
     const data = await connectDB(sql)
     res.json({
@@ -25,7 +25,7 @@ router.post('/add_qq', async function (req, res, next) {
 router.post('/del_qq', async function (req, res, next) {
     const { qq } = req.body
     console.log(req.body.data)
-    const sql = `DELETE FROM account WHERE qq = ${qq};`
+    const sql = "DELETE FROM account WHERE qq = '" + req.params.id + "';"
     const data = await connectDB(sql)
     res.json({
         msg: 'success',
