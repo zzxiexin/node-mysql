@@ -1,7 +1,6 @@
 var express = require('express');
 var router = express.Router();
 var connectDB = require('../server/index')
-let id = 2;
 router.get('/get/:id', async function (req, res, next) {
     const sql = `SELECT * from account where qq = ${req.params.id}`
     const data = await connectDB(sql)
@@ -14,8 +13,8 @@ router.get('/get/:id', async function (req, res, next) {
 
 router.post('/add_qq', async function (req, res, next) {
     const { qq, mima } = req.body
-    const sql = `INSERT INTO account (id, qq, mima) VALUES (${id++}, ${qq}, ${mima});`
-    console.log(typeof mima)
+    const sql = 'INSERT INTO account (qq, mima) VALUES (' + qq + ', ' + mima + ');'
+    console.log(sql)
     const data = await connectDB(sql)
     res.json({
         msg: 'success',

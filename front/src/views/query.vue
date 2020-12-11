@@ -19,6 +19,7 @@
 </template>
 <script>
 import { get_qq } from "@/api";
+import { Notify } from "vant";
 export default {
   data() {
     return {
