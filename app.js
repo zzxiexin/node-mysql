@@ -10,7 +10,7 @@ var curdRouter = require('./routes/curd')
 var app = express();
 const accessOriginObj = {
   'Access-Control-Allow-Origin': '*',
-  'Access-Control-Allow-Headers': 'X-Requested-With',
+  'Access-Control-Allow-Headers': 'content-type',
   'Access-Control-Allow-Methods': 'PUT,POST,GET,DELETE,OPTIONS',
   'X-Powered-By': '3.2.1'
 }
